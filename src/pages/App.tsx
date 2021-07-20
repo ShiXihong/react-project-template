@@ -1,6 +1,7 @@
 import { Component, Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ErrorBoundary from '../components/ErrorBoundary';
+import Loading from '../components/Loading';
 import Routes from '../routes';
 import './App.scss';
 
@@ -36,7 +37,7 @@ export default class App extends Component<AppProps, AppState>{
     return (
       <ErrorBoundary>
         <Router>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={Loading}>
             <Routes childProps={childProps} />
           </Suspense>
         </Router>
