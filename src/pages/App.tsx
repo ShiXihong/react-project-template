@@ -19,8 +19,13 @@ interface AppState
 }
 
 export default class App extends Component<AppProps, AppState>{
+  constructor(props: AppProps)
+  {
+    super(props);
+    this.updateUserToken = this.updateUserToken.bind(this);
+  }
 
-  updateUserToken = (userToken: string) =>
+  updateUserToken(userToken: string)
   {
     this.setState({
       userToken: userToken
@@ -37,7 +42,7 @@ export default class App extends Component<AppProps, AppState>{
     return (
       <ErrorBoundary>
         <Router>
-          <Suspense fallback={Loading}>
+          <Suspense fallback={<Loading />}>
             <Routes childProps={childProps} />
           </Suspense>
         </Router>
